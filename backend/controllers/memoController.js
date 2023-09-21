@@ -6,7 +6,7 @@ const Memo = require("../models/memoModel");
 const getMemos = asyncHandler(async (req, res) => {
   const memos = await Memo.find();
 
-  res.status(200).json(memos);
+  res.status(200).json({memos});
 });
 
 // Create memo
@@ -20,7 +20,7 @@ const createMemo = asyncHandler(async (req, res) => {
     text: req.body.text,
   });
 
-  res.status(200).json(memo);
+  res.status(200).json({memo});
 });
 
 // Update memo
@@ -36,7 +36,7 @@ const updateMemo = asyncHandler(async (req, res) => {
     new: true,
   });
 
-  res.status(200).json(updatedMemo);
+  res.status(200).json({memo: updatedMemo});
 });
 
 // Delete memo
