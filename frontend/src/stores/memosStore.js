@@ -14,7 +14,7 @@ const memosStore = create((set) => ({
   // Fetch memos
   fetchMemos: async () => {
     // Fetch the memos
-    const res = await axios.get("http://localhost:5000/api/memos");
+    const res = await axios.get("/api/memos");
     // Set to state
     set({
       memos: res.data.memos,
@@ -41,7 +41,7 @@ const memosStore = create((set) => ({
 
     const { createForm, memos } = memosStore.getState();
 
-    const res = await axios.post("http://localhost:5000/api/memos", createForm);
+    const res = await axios.post("/api/memos", createForm);
 
     set({
       // Update state
@@ -54,7 +54,7 @@ const memosStore = create((set) => ({
   //   Delete memo
   deleteMemo: async (_id) => {
     // Delete memo
-    const res = await axios.delete(`http://localhost:5000/api/memos/${_id}`);
+    const res = await axios.delete(`/api/memos/${_id}`);
 
     const { memos } = memosStore.getState();
 
@@ -91,19 +91,17 @@ const memosStore = create((set) => ({
     });
   },
 
-//   Update memo
+  //   Update memo
   updateMemo: async (e) => {
     e.preventDefault();
 
-    const {updateForm: {
-        _id, text
-    }, memos} = memosStore.getState()
+    const {
+      updateForm: { _id, text },
+      memos,
+    } = memosStore.getState();
 
     // Send the update request
-    const res = await axios.put(
-      `http://localhost:5000/api/memos/${_id}`,
-      { text }
-    );
+    const res = await axios.put(`/api/memos/${_id}`, { text });
 
     // Update state
     const newMemos = [...memos];
@@ -113,11 +111,9 @@ const memosStore = create((set) => ({
     newMemos[memoIndex] = res.data.memo;
 
     set({
-        memos: newMemos,
-        updateForm: { _id: null, text: "" }
-    })
-
-   
+      memos: newMemos,
+      updateForm: { _id: null, text: "" },
+    });
   },
 }));
 
