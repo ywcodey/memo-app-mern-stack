@@ -4,8 +4,8 @@ import Memo from "./Memo";
 function Memos() {
   const store = memosStore();
   return (
-    <div>
-      <h1>Memos:</h1>
+    <div className="memos">
+      
       {store.memos &&
         store.memos.map((memo) => {
           return (

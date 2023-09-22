@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import memosStore from "./stores/memosStore";
 import Memos from "./components/Memos";
-import UpdateForm from "./components/UpdateForm";
-import CreateForm from "./components/CreateForm";
+import Form from "./components/Form";
+import Header from "./components/Header";
 
 function App() {
   // Store
@@ -14,12 +14,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="container">
+      <Header />
+      <Form />
       <Memos />
-
-      <UpdateForm />
-
-     <CreateForm />
     </div>
   );
 }

@@ -1,26 +1,30 @@
-import memosStore from '../stores/memosStore'
+import memosStore from "../stores/memosStore";
 
 function CreateForm() {
-    const store = memosStore()
-
-    if (store.updateForm._id) return <></>
+  const store = memosStore();
 
   return (
-    
-        <div>
-          <h2>Create memo</h2>
-          <form onSubmit={store.createMemo}>
+    <div>
+      <section className="heading">
+        <h2>Create memo</h2>
+      </section>
+      <section className="form">
+        <form onSubmit={store.createMemo}>
+          <div className="form-group">
             <input
               type="text"
               name="text"
               value={store.createForm.text}
               onChange={store.updateCreateFormField}
             />
-            <button type="submit">Create</button>
-          </form>
-        </div>
-      
-  )
+          </div>
+          <div className="form-group">
+            <button className="btn" type="submit">Create</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  );
 }
 
-export default CreateForm
+export default CreateForm;
